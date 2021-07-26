@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorPrimarySurface">@color/alto</item>
+        <item name="colorOnSurface">@color/mine_shaft</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorControlHighlight">@color/colorRipple</item>
+        <item name="colorControlNormal">@color/mine_shaft</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Acc.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Acc.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Acc.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Acc.Headline4</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Acc.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Acc.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Acc.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Acc.Body2</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Acc.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Acc.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Acc.LargeComponent</item>
+        <item name="snackbarStyle">@style/SnackbarStyle</item>
+    </style>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="SnackbarStyle" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:backgroundTint">@color/mine_shaft_48</item>
+    </style>
+
+    <style name="ShapeAppearance.Acc.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_size_50</item>
+    </style>
+
+    <style name="ShapeAppearance.Acc.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_size_medium</item>
+    </style>
+
+    <style name="ShapeAppearance.Acc.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_size_large</item>
+    </style>
+
+    <style name="CircleFabButtonSmall" parent="Widget.MaterialComponents.Button">
+        <item name="android:height">@dimen/button_fab_circle_size</item>
+        <item name="android:width">@dimen/button_fab_circle_size</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="backgroundTint">?colorSurface</item>
+        <item name="iconTint">@null</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Acc.CircleFabButton</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Acc.CircleFabButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Acc.CardView.Small" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_size_small</item>
+    </style>
+</resources>

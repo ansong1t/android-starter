@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_home_nav"
+    app:startDestination="@id/itemsFragment">
+
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.dyippay.ui.items.ItemsFragment"
+        android:label="Items" />
+
+    <fragment
+        android:id="@+id/songDetailsFragment"
+        android:name="com.dyippay.ui.songdetails.SongDetailsFragment"
+        android:label="Song Details">
+
+        <argument
+            android:name="track_id"
+            app:argType="long" />
+
+        <deepLink
+            app:uri="com.appetizercodingchallenge://song/{track_id}" />
+    </fragment>
+
+</navigation>
