@@ -29,4 +29,5 @@
     <color name="alto">#DBDBDB</color>
     <color name="gray">#868686</color>
     <color name="gray_8d">#8D8D8D</color>
+    <color name="splash_mask_color">#BB020387</color>
 </resources>
