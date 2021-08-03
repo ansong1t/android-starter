@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             if (show && visibility == View.VISIBLE || !show && visibility == View.GONE) return
 
             val transition: Transition = Slide(Gravity.BOTTOM)
-            transition.duration = 600
+            transition.duration =
+                resources.getInteger(R.integer.bottom_nav_hide_show_duration).toLong()
             transition.addTarget(this)
 
             TransitionManager.beginDelayedTransition(binding?.root as ViewGroup, transition)
@@ -95,6 +96,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     companion object {
-        private val NO_BOTTOM_NAV_IDS = arrayOf<Int>()
+        private val NO_BOTTOM_NAV_IDS = arrayOf(
+            R.id.songDetailsFragment
+        )
     }
 }
