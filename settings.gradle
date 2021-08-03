@@ -15,4 +15,4 @@ include ':base-android'
 include ':base'
 include ':base'
 include ':app'
-rootProject.name = "dyippay"
+rootProject.name = "dyippay-commuter"
