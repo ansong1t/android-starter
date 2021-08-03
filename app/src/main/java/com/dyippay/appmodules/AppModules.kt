@@ -2,14 +2,12 @@ package com.dyippay.appmodules
 
 import com.dyippay.data.qualifiers.LastUserVisitFormatter
 import com.dyippay.util.AppCoroutineDispatchers
-import com.dyippay.util.DyippayLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import java.text.SimpleDateFormat
 import java.util.Locale
-import javax.inject.Singleton
 
 @InstallIn(ActivityComponent::class)
 @Module

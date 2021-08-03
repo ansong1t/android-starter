@@ -140,6 +140,23 @@ object Libs {
             const val dagger = "com.google.dagger:dagger:$version"
             const val compiler = "com.google.dagger:dagger-compiler:$version"
         }
+
+        object Maps {
+            // Google Maps
+            private const val playServicesMapsVersion = "16.0.0"
+            private const val playServicesLocationVersion = "16.0.0"
+            private const val playServicesPlacesVersion = "16.0.0"
+            private const val playMapsUtilVersion = "2.2.0"
+            private const val placesVersion = "2.3.0"
+
+            // Google Maps
+            val playServicesMaps = "com.google.android.gms:play-services-maps:$playServicesMapsVersion"
+            val playServicesPlaces = "com.google.android.gms:play-services-places:$playServicesPlacesVersion"
+            val playServicesLocation = "com.google.android.gms:play-services-location:$playServicesLocationVersion"
+            val playMapsUtil = "com.google.maps.android:android-maps-utils:$playMapsUtilVersion"
+            val places = "com.google.android.libraries.places:places:$placesVersion"
+        }
+        val playServicesAuth = "com.google.android.gms:play-services-auth:17.0.0"
     }
 
     object AssistedInject {

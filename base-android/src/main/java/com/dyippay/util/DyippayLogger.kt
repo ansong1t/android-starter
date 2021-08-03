@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Suppress("SpreadOperator")
 @Singleton
-class DyippayLogger @Inject constructor(): Logger {
+class DyippayLogger @Inject constructor() : Logger {
     fun setup() {
         if (BuildConfig.DEBUG) {
             Timber.plant(QrDebugTree())

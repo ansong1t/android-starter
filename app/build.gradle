@@ -7,6 +7,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
+apply from: '../secret.gradle'
 //apply plugin: 'com.google.gms.google-services'
 //apply plugin: 'com.google.firebase.crashlytics'
 
@@ -29,7 +30,6 @@ android {
                 ]
             }
         }
-        buildConfigField "String", "BASE_URL", "\"https://itunes.apple.com/\""
     }
     buildTypes {
         debug {
@@ -38,12 +38,34 @@ android {
             applicationIdSuffix ".debug"
             versionNameSuffix '-debug'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            stagingApi.each { key, value ->
+                buildConfigField 'String', key, "\"" + value + "\""
+            }
+
+            resValue "string", "facebook_app_id", facebookProd.facebook_app_id
+            resValue "string", "fb_login_protocol_scheme", facebookProd.fb_login_protocol_scheme
+            resValue "string", "google_maps_api_key", googleMapsProd.api_key
         }
 
         release {
             debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            releaseApi.each { key, value ->
+                buildConfigField 'String', key, "\"" + value + "\""
+            }
+
+            resValue "string", "facebook_app_id", facebookDebug.facebook_app_id
+            resValue "string", "fb_login_protocol_scheme", facebookDebug.fb_login_protocol_scheme
+            resValue "string", "google_maps_api_key", googleMapsDebug.api_key
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file("$projectDir/${secretDebug.fileName}")
+            keyAlias secretDebug.keyAlias
+            storePassword secretDebug.storePassword
+            keyPassword secretDebug.keyPassword
         }
     }
 
@@ -159,7 +181,7 @@ dependencies {
     // Firebase
 //    implementation Libs.Google.firebaseAnalytics
 //    implementation Libs.Google.firebaseMessaging
-//    implementation Libs.Google.crashlytics
+    implementation Libs.Google.crashlytics
 
     implementation Libs.threeTenAbp
     debugImplementation Libs.leakCanary

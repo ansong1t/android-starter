@@ -47,5 +47,10 @@ app/schemas
 # Google Services (e.g. APIs or Firebase)
 #google-services.json
 
+# Secured Gradle variables should not be pushed
+# secure.gradle
+# app/secret.gradle
+secret.gradle
+
 # Mac
 .DS_STORE

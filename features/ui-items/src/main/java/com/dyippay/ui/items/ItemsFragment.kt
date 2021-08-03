@@ -10,19 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.ModelCollector
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import com.dyippay.api.UiError
 import com.dyippay.api.UiLoading
 import com.dyippay.common.FragmentWithBinding
 import com.dyippay.common.layout.headline3
-import com.dyippay.common.navigation.audioBookDetailsDeeplink
 import com.dyippay.common.navigation.defaultNavAnimation
-import com.dyippay.common.navigation.movieDetailsDeeplink
 import com.dyippay.common.navigation.songDetailsDeeplink
-import com.dyippay.common.navigation.tvShowDetailsDeeplink
 import com.dyippay.common.paging.PagingEpoxyController
 import com.dyippay.data.qualifiers.LastUserVisitFormatter
 import com.dyippay.data.resultentities.ItemEntryWithDetails
@@ -33,7 +26,11 @@ import com.dyippay.ui.items.databinding.FragmentItemsBinding
 import com.dyippay.util.autoCleared
 import com.dyippay.util.getLastUserVisitedTime
 import com.dyippay.util.getPref
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 

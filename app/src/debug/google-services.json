@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "168055796790",
+    "project_id": "dyippay-dev",
+    "storage_bucket": "dyippay-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168055796790:android:183091024eafa6a7515497",
+        "android_client_info": {
+          "package_name": "com.dyippay.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168055796790-vjr6f7c8ctdapcofoiukgc6v90166eut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dyippay.debug",
+            "certificate_hash": "97b3076caf8e4e12b49b6ddc36bf4e8400d7f248"
+          }
+        },
+        {
+          "client_id": "168055796790-a7e1and13o4cb3g63h4uodpi41k085sb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD85JURoEy_iYouKJCxR5xh0aA2OyDuPIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168055796790-a7e1and13o4cb3g63h4uodpi41k085sb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
