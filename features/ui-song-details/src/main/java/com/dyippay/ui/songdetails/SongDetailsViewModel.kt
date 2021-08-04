@@ -9,13 +9,9 @@ import com.dyippay.util.ObservableLoadingCounter
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-@FlowPreview
-@ExperimentalCoroutinesApi
 class SongDetailsViewModel @AssistedInject constructor(
     @Assisted trackId: Long,
     observeSong: ObserveSong,

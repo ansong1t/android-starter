@@ -28,14 +28,12 @@ import com.dyippay.util.getLastUserVisitedTime
 import com.dyippay.util.getPref
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 @InternalCoroutinesApi
-@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class ItemsFragment : FragmentWithBinding<FragmentItemsBinding>() {
 

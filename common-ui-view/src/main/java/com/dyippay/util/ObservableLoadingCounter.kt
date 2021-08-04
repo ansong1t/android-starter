@@ -20,7 +20,6 @@ import com.dyippay.base.InvokeError
 import com.dyippay.base.InvokeStarted
 import com.dyippay.base.InvokeStatus
 import com.dyippay.base.InvokeSuccess
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -28,7 +27,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.collect
 import java.util.concurrent.atomic.AtomicInteger
 
-@ExperimentalCoroutinesApi
 class ObservableLoadingCounter {
     private val count = AtomicInteger()
     private val loadingState = MutableStateFlow(count.get())
@@ -45,7 +43,6 @@ class ObservableLoadingCounter {
     }
 }
 
-@ExperimentalCoroutinesApi
 suspend fun Flow<InvokeStatus>.collectInto(counter: ObservableLoadingCounter) = collect {
     when (it) {
         InvokeStarted -> counter.addLoader()
@@ -53,7 +50,6 @@ suspend fun Flow<InvokeStatus>.collectInto(counter: ObservableLoadingCounter) = 
     }
 }
 
-@ExperimentalCoroutinesApi
 suspend fun Flow<InvokeStatus>.collectInto(
     counter: ObservableLoadingCounter,
     block: (InvokeStatus) -> Unit

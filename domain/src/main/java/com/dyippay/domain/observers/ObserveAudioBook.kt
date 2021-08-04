@@ -3,11 +3,9 @@ package com.dyippay.domain.observers
 import com.dyippay.data.entities.AudioBook
 import com.dyippay.data.repositories.AudioBookRepository
 import com.dyippay.domain.SubjectInteractor
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 class ObserveAudioBook @Inject constructor(
     private val repository: AudioBookRepository
 ) : SubjectInteractor<ObserveAudioBook.Params, AudioBook>() {

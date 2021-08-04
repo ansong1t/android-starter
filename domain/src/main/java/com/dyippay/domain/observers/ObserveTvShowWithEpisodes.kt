@@ -3,11 +3,9 @@ package com.dyippay.domain.observers
 import com.dyippay.data.repositories.TvShowRepository
 import com.dyippay.data.resultentities.TvShowWithEpisodes
 import com.dyippay.domain.SubjectInteractor
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 class ObserveTvShowWithEpisodes @Inject constructor(
     private val repository: TvShowRepository
 ) : SubjectInteractor<ObserveTvShowWithEpisodes.Params, TvShowWithEpisodes>() {

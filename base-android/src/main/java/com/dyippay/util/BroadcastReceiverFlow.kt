@@ -20,13 +20,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 
-@ExperimentalCoroutinesApi
 fun Context.flowBroadcasts(intentFilter: IntentFilter): Flow<Intent> {
     val resultChannel = MutableStateFlow(Intent())
 

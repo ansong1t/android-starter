@@ -17,12 +17,8 @@ import com.dyippay.util.viewModelProviderFactoryOf
 import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
 import dev.chrisbanes.insetter.setEdgeToEdgeSystemUiFlags
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import javax.inject.Inject
 
-@FlowPreview
-@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class SongDetailsFragment :
     FragmentWithBinding<FragmentSongDetailsBinding>() {

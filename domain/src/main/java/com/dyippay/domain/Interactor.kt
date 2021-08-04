@@ -21,7 +21,6 @@ import com.dyippay.base.InvokeError
 import com.dyippay.base.InvokeStarted
 import com.dyippay.base.InvokeStatus
 import com.dyippay.base.InvokeSuccess
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,7 +75,6 @@ abstract class PagingInteractor<P : PagingInteractor.Parameters<T>, T> : Subject
     }
 }
 
-@ExperimentalCoroutinesApi
 abstract class SuspendingWorkInteractor<P : Any, T> : SubjectInteractor<P, T>() {
     override fun createObservable(params: P): Flow<T> = flow {
         emit(doWork(params))
@@ -85,7 +83,6 @@ abstract class SuspendingWorkInteractor<P : Any, T> : SubjectInteractor<P, T>() 
     abstract suspend fun doWork(params: P): T
 }
 
-@ExperimentalCoroutinesApi
 abstract class SubjectInteractor<P : Any, T> {
     private val paramState = MutableStateFlow<P?>(null)
 
@@ -99,5 +96,5 @@ abstract class SubjectInteractor<P : Any, T> {
 }
 
 operator fun Interactor<Unit>.invoke() = invoke(Unit)
-@ExperimentalCoroutinesApi
+
 operator fun <T> SubjectInteractor<Unit, T>.invoke() = invoke(Unit)
