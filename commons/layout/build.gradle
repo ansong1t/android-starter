@@ -1,9 +1,10 @@
 import com.dyippay.Libs
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
 kapt {
     correctErrorTypes = true
     useBuildCache = true
@@ -30,13 +31,14 @@ android {
 }
 
 dependencies {
-    implementation project(':base-android')
-    implementation project(':data')
-    implementation project(':common-ui-view')
+    implementation project(':commons:ui-resources')
+    implementation project(':commons:image-loading')
+    implementation project(':commons:ui-view')
+    implementation project(':commons:epoxy')
+    implementation project(':commons:databinding')
 
-    api Libs.Insetter.dbx
+    implementation Libs.Google.material
+    implementation Libs.AndroidX.constraintLayout
 
-    implementation Libs.AndroidX.swiperefresh
-    implementation Libs.AndroidX.coreKtx
-
+    kapt Libs.Epoxy.processor
 }

@@ -3,11 +3,11 @@ import com.dyippay.Libs
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
 kapt {
     correctErrorTypes = true
     useBuildCache = true
 }
-
 
 android {
     compileSdkVersion buildConfig.compileSdk
@@ -31,9 +31,10 @@ android {
 
 dependencies {
     implementation project(':base-android')
-    implementation project(':common-ui-resources')
+    implementation project(':data')
+    implementation project(':commons:ui-view')
 
-    api Libs.Coil.coil
+    api Libs.Insetter.dbx
 
     implementation Libs.AndroidX.swiperefresh
     implementation Libs.AndroidX.coreKtx

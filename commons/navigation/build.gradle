@@ -1,10 +1,9 @@
 import com.dyippay.Libs
 
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 kapt {
     correctErrorTypes = true
     useBuildCache = true
@@ -24,21 +23,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures {
-        dataBinding true
-    }
 }
 
 dependencies {
-    implementation project(':common-ui-resources')
-    implementation project(':common-image-loading')
-    implementation project(':common-ui-view')
-    implementation project(':common-epoxy')
-    implementation project(':common-databinding')
-
+    implementation project(':commons:ui-resources')
+    
+    implementation Libs.AndroidX.appcompat
     implementation Libs.Google.material
-    implementation Libs.AndroidX.constraintLayout
 
-    kapt Libs.Epoxy.processor
+    implementation Libs.AndroidX.Navigation.fragment
 }

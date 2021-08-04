@@ -1,13 +1,14 @@
 import com.dyippay.Libs
 
 apply plugin: 'com.android.library'
+
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 kapt {
     correctErrorTypes = true
     useBuildCache = true
 }
-
 
 android {
     compileSdkVersion buildConfig.compileSdk
@@ -23,27 +24,25 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures {
-        dataBinding true
-    }
 }
 
 dependencies {
+    implementation project(':data-android')
     implementation project(':base-android')
-    implementation project(':domain')
-    implementation project(':common-layout')
-    implementation project(':common-ui-view')
-    implementation project(':common-epoxy')
-    implementation project(':common-databinding')
+    implementation project(':commons:ui-resources')
 
-    implementation Libs.AndroidX.Lifecycle.livedata
-    implementation Libs.AndroidX.Lifecycle.viewmodel
+    api Libs.AndroidX.Lifecycle.livedata
+    api Libs.AndroidX.Lifecycle.viewmodel
 
-    implementation Libs.AndroidX.swiperefresh
-    implementation Libs.AndroidX.constraintLayout
+    implementation Libs.Coroutines.core
+
+    api Libs.AndroidX.appcompat
     implementation Libs.AndroidX.recyclerview
+    implementation Libs.AndroidX.constraintLayout
     implementation Libs.AndroidX.coreKtx
-    implementation Libs.AndroidX.Fragment.fragmentKtx
+    api Libs.AndroidX.Fragment.fragment
+    api Libs.AndroidX.Fragment.fragmentKtx
     implementation Libs.AndroidX.Navigation.fragment
+
+    api Libs.Google.material
 }

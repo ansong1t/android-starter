@@ -35,13 +35,13 @@ dependencies {
     implementation project(':base-android')
     implementation project(':data-android')
     implementation project(':domain')
-    implementation project(':common-layout')
-    implementation project(':common-ui-resources')
-    implementation project(':common-ui-view')
-    implementation project(':common-databinding')
-    implementation project(':common-navigation')
-    implementation project(':common-image-loading')
-    implementation project(':common-epoxy')
+    implementation project(':commons:layout')
+    implementation project(':commons:ui-resources')
+    implementation project(':commons:ui-view')
+    implementation project(':commons:databinding')
+    implementation project(':commons:navigation')
+    implementation project(':commons:image-loading')
+    implementation project(':commons:epoxy')
 
     implementation Libs.AndroidX.recyclerview
     implementation Libs.AndroidX.swiperefresh
