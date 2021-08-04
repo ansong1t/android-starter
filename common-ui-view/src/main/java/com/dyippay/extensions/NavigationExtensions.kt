@@ -10,10 +10,10 @@ fun NavController.navigateToNavDestination(itemId: Int, popUpToStart: Boolean = 
     val options = navOptions {
         launchSingleTop = true
         anim {
-            enter = R.anim.acc_enter_anim
-            exit = R.anim.acc_exit_anim
-            popEnter = R.anim.acc_pop_enter_anim
-            popExit = R.anim.acc_pop_exit_anim
+            enter = R.anim.enter_anim
+            exit = R.anim.exit_anim
+            popEnter = R.anim.pop_enter_anim
+            popExit = R.anim.pop_exit_anim
         }
         if (popUpToStart) {
             popUpTo(graph.findStartDestination().id) {

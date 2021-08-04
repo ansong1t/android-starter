@@ -1,5 +1,5 @@
 package com.dyippay.data.entities
 
-interface AccEntity {
+interface DyippayEntity {
     val id: Long
 }

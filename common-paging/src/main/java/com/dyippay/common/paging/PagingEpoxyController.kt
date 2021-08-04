@@ -3,17 +3,17 @@ package com.dyippay.common.paging
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.ModelCollector
-import com.airbnb.epoxy.paging.PagedListEpoxyController
-import com.dyippay.api.UiLoading
+import com.airbnb.epoxy.paging3.PagingDataEpoxyController
 import com.dyippay.common.epoxy.TotalSpanOverride
 import com.dyippay.common.layout.vertSpacerSmall
-import com.dyippay.common.layout.infiniteLoading
 import com.dyippay.extensions.observable
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 
-abstract class PagingEpoxyController<STATE : PagingViewState, LI, Placeholder : EpoxyModel<*>>(
+@ObsoleteCoroutinesApi
+abstract class PagingEpoxyController<STATE, LI : Any, Placeholder : EpoxyModel<*>>(
     initialState: STATE,
     clearCacheOnStateChange: Boolean = false
-) : PagedListEpoxyController<LI>() {
+) : PagingDataEpoxyController<LI>() {
 
     var state: STATE by observable(initialState) {
         if (clearCacheOnStateChange) requestForcedModelBuild()
@@ -51,18 +51,7 @@ abstract class PagingEpoxyController<STATE : PagingViewState, LI, Placeholder : 
             onEmptyState(this)
         }
 
-        val status = state.status
-        if (status is UiLoading && !status.fullRefresh) {
-            infiniteLoading {
-                id("loading_view")
-                spanSizeOverride(TotalSpanOverride)
-                onBind { _, view, _ ->
-                    val layoutParams =
-                        view.dataBinding.root.layoutParams as? StaggeredGridLayoutManager.LayoutParams
-                    layoutParams?.isFullSpan = true
-                }
-            }
-        }
+        insertFooterModels(this)
     }
 
     override fun buildItemModel(currentPosition: Int, item: LI?): EpoxyModel<*> {
@@ -74,6 +63,8 @@ abstract class PagingEpoxyController<STATE : PagingViewState, LI, Placeholder : 
     protected open fun onEmptyState(modelCollector: ModelCollector) {}
 
     protected open fun insertHeaderModels(modelCollector: ModelCollector) {}
+
+    protected open fun insertFooterModels(modelCollector: ModelCollector) {}
 
     protected abstract fun buildItemPlaceholder(index: Int): Placeholder
 }

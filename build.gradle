@@ -3,9 +3,6 @@ import com.dyippay.Libs
 
 buildscript {
 
-    ext {
-        kotlin_version = '1.5.0'
-    }
     ext.buildConfig = [
             'compileSdk': 30,
             'minSdk'    : 21,
@@ -22,7 +19,6 @@ buildscript {
         classpath Libs.AndroidX.Navigation.safeArgs
         classpath Libs.Google.Hilt.hiltGradle
         classpath Libs.Google.gmsGoogleServices
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 //        classpath Libs.Google.crashlyticsGradle
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

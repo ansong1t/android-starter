@@ -5,9 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
-import com.dyippay.data.entities.AccEntity
+import com.dyippay.data.entities.DyippayEntity
 
-abstract class EntityDao<in E : AccEntity> {
+abstract class EntityDao<in E : DyippayEntity> {
     @Insert
     abstract suspend fun insert(entity: E): Long
 

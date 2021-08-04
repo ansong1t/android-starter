@@ -19,7 +19,7 @@
             app:argType="long" />
 
         <deepLink
-            app:uri="com.appetizercodingchallenge://song/{track_id}" />
+            app:uri="com.dyippay://song/{track_id}" />
     </fragment>
 
 </navigation>

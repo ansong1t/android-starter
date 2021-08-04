@@ -22,4 +22,4 @@ data class SearchedItemEntry(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) override val id: Long = 0,
     @ColumnInfo(name = "item_id") val itemId: Long = 0,
     @ColumnInfo(name = "search_key") val searchKey: String = ""
-) : AccEntity
+) : DyippayEntity

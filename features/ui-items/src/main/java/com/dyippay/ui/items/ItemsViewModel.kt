@@ -1,52 +1,62 @@
 package com.dyippay.ui.items
 
-import com.dyippay.api.UiStatus
-import com.dyippay.base.InvokeStatus
-import com.dyippay.common.paging.PagingViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.dyippay.data.resultentities.ItemEntryWithDetails
 import com.dyippay.domain.interactors.UpdateItems
 import com.dyippay.domain.observers.ObservePagedItems
-import com.dyippay.util.AppCoroutineDispatchers
+import com.dyippay.util.ObservableLoadingCounter
+import com.dyippay.util.collectInto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 @ExperimentalCoroutinesApi
 class ItemsViewModel @Inject constructor(
-    override val dispatchers: AppCoroutineDispatchers,
-    override val pagingInteractor: ObservePagedItems,
+    private val pagingInteractor: ObservePagedItems,
     private val interactor: UpdateItems
-) : PagingViewModel<ItemsViewState, ItemEntryWithDetails, ObservePagedItems>(
-    state = ItemsViewState(),
-    pageSize = 6
-) {
+) : ViewModel() {
+
+    private val loading = ObservableLoadingCounter()
+    private val state: Flow<ItemsViewState> = loading.observable.map {
+        ItemsViewState(isLoading = it)
+    }
+
+    val liveData: LiveData<ItemsViewState> = state.asLiveData()
+
+    val pagedList: Flow<PagingData<ItemEntryWithDetails>>
+        get() = pagingInteractor.observe()
 
     init {
         pagingInteractor(
             ObservePagedItems.Params(
-                pageListConfig,
-                boundaryCallback
+                PAGING_CONFIG
             )
         )
 
-        launchObserves()
-
-        refresh(fromUser = false, fullRefresh = false)
+        refresh(fromUser = false)
     }
 
-    override fun callRefresh(fromUser: Boolean): Flow<InvokeStatus> {
-        return interactor(UpdateItems.Params(UpdateItems.Page.REFRESH, fromUser))
+    fun refresh(fromUser: Boolean = true) {
+        viewModelScope.launch {
+            interactor(UpdateItems.Params(UpdateItems.Page.REFRESH, fromUser))
+                .collectInto(loading)
+        }
     }
 
-    override fun callLoadMore(): Flow<InvokeStatus> {
-        return interactor(UpdateItems.Params(UpdateItems.Page.NEXT_PAGE))
+    companion object {
+        private val PAGING_CONFIG = PagingConfig(
+            pageSize = 60,
+            prefetchDistance = 20,
+            enablePlaceholders = false
+        )
     }
-
-    override fun ItemsViewState.setLoaded(isLoaded: Boolean): ItemsViewState =
-        copy(isLoaded = isLoaded)
-
-    override fun ItemsViewState.setStatus(status: UiStatus): ItemsViewState =
-        copy(status = status)
 }

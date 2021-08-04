@@ -25,7 +25,7 @@ data class AudioBook(
     @ColumnInfo(name = "release_date") val releaseDate: String = "",
     @ColumnInfo(name = "track_count") val trackCount: Int = 0,
     @ColumnInfo(name = "wrapper_type") val wrapperType: String = ""
-) : AccEntity {
+) : DyippayEntity {
 
     fun isExplicit(): Boolean = collectionExplicitness == "explicit"
 }

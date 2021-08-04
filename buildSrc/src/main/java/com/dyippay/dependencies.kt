@@ -14,7 +14,7 @@ object Libs {
     const val chucker = "com.github.chuckerteam.chucker:library:3.2.0"
     const val chuckerNoop = "com.github.chuckerteam.chucker:library-no-op:3.2.0"
     const val mockito = "org.mockito:mockito-inline:2.25.0"
-    const val store = "com.dropbox.mobile.store:store4:4.0.0-alpha06"
+    const val store = "com.dropbox.mobile.store:store4:4.0.2-KT15"
     const val timber = "com.jakewharton.timber:timber:4.7.1"
     const val imagePicker = "com.github.dhaval2404:imagepicker:1.7.3"
 
@@ -26,7 +26,7 @@ object Libs {
     }
 
     object Coroutines {
-        private const val version = "1.4.1"
+        private const val version = "1.5.1"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
@@ -35,7 +35,7 @@ object Libs {
     object AndroidX {
         const val archCoreTesting = "androidx.arch.core:core-testing:2.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
-        const val appcompat = "androidx.appcompat:appcompat:1.1.0"
+        const val appcompat = "androidx.appcompat:appcompat:1.3.0"
         const val coreKtx = "androidx.core:core-ktx:1.3.0"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
         const val viewpager = "androidx.viewpager2:viewpager2:1.0.0"
@@ -62,9 +62,9 @@ object Libs {
         }
 
         object Paging {
-            private const val version = "2.1.2"
-            const val common = "androidx.paging:paging-common-ktx:$version"
-            const val runtime = "androidx.paging:paging-runtime-ktx:$version"
+            private const val version = "3.0.0"
+            const val common = "androidx.paging:paging-common:$version"
+            const val runtime = "androidx.paging:paging-runtime:$version"
         }
 
         object Room {
@@ -108,7 +108,7 @@ object Libs {
     object Epoxy {
         private const val version = "4.6.2"
         const val epoxy = "com.airbnb.android:epoxy:$version"
-        const val paging = "com.airbnb.android:epoxy-paging:$version"
+        const val paging = "com.airbnb.android:epoxy-paging3:$version"
         const val dataBinding = "com.airbnb.android:epoxy-databinding:$version"
         const val processor = "com.airbnb.android:epoxy-processor:$version"
     }
@@ -124,7 +124,7 @@ object Libs {
         const val crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.5.0"
         const val firebaseAnalytics = "com.google.firebase:firebase-analytics:19.0.0"
         const val firebaseMessaging = "com.google.firebase:firebase-messaging:22.0.0"
-        const val material = "com.google.android.material:material:1.3.0-rc01"
+        const val material = "com.google.android.material:material:1.4.0"
         const val truth = "com.google.truth:truth:0.42"
         const val gmsGoogleServices = "com.google.gms:google-services:4.3.8"
 

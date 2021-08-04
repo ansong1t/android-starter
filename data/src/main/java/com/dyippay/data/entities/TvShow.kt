@@ -20,4 +20,4 @@ data class TvShow(
     @ColumnInfo(name = "disc_number") val discNumber: Int = 0,
     @ColumnInfo(name = "long_description") val longDescription: String = "",
     @ColumnInfo(name = "primary_genre_name") val primaryGenreName: String = ""
-) : AccEntity
+) : DyippayEntity

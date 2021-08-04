@@ -12,6 +12,8 @@ dependencies {
 
     api Libs.threeTenBpNoTzdb
 
+    api Libs.store
+
     api Libs.Moshi.kotlin
     kapt Libs.Moshi.codegen
 

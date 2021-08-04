@@ -110,10 +110,9 @@ android {
 check.dependsOn ktlint
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation Libs.AndroidX.appcompat
+    implementation Libs.Google.material
+    implementation Libs.AndroidX.constraintLayout
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':base-android')
     implementation project(':common-layout')
@@ -126,6 +125,7 @@ dependencies {
     implementation project(':data-android')
     implementation project(':domain')
 
+    implementation project(':features:ui-login')
     implementation project(':features:ui-items')
     implementation project(':features:ui-song-details')
 
@@ -139,9 +139,6 @@ dependencies {
     implementation Libs.AndroidX.recyclerview
     implementation Libs.AndroidX.constraintLayout
     implementation Libs.AndroidX.viewpager
-
-    implementation Libs.AndroidX.Paging.runtime
-    implementation Libs.AndroidX.Paging.common
 
     implementation Libs.AndroidX.Room.runtime
     implementation Libs.AndroidX.Room.ktx

@@ -10,10 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.ModelCollector
-import com.dyippay.api.UiError
-import com.dyippay.api.UiLoading
 import com.dyippay.common.FragmentWithBinding
+import com.dyippay.common.epoxy.TotalSpanOverride
 import com.dyippay.common.layout.headline3
+import com.dyippay.common.layout.infiniteLoading
 import com.dyippay.common.navigation.defaultNavAnimation
 import com.dyippay.common.navigation.songDetailsDeeplink
 import com.dyippay.common.paging.PagingEpoxyController
@@ -28,11 +28,15 @@ import com.dyippay.util.getLastUserVisitedTime
 import com.dyippay.util.getPref
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
+@ObsoleteCoroutinesApi
 @InternalCoroutinesApi
 @AndroidEntryPoint
 class ItemsFragment : FragmentWithBinding<FragmentItemsBinding>() {
@@ -94,7 +98,7 @@ class ItemsFragment : FragmentWithBinding<FragmentItemsBinding>() {
 
         lifecycleScope.launchWhenStarted {
             viewModel.pagedList.collect {
-                controller?.submitList(it)
+                controller?.submitData(it)
             }
         }
 
@@ -104,16 +108,14 @@ class ItemsFragment : FragmentWithBinding<FragmentItemsBinding>() {
     private fun render(state: ItemsViewState) {
         controller!!.state = state
 
-        when (val status = state.status) {
-            is UiError -> {
-                swipeRefreshLatch.refreshing = false
-                Snackbar.make(requireView(), status.message, Snackbar.LENGTH_SHORT).show()
-            }
-            is UiLoading -> swipeRefreshLatch.refreshing = status.fullRefresh
-            else -> swipeRefreshLatch.refreshing = false
+        state.error?.let { error ->
+            swipeRefreshLatch.refreshing = false
+            Snackbar.make(requireView(), error.message, Snackbar.LENGTH_SHORT).show()
         }
+        swipeRefreshLatch.refreshing = state.isLoading
     }
 
+    @ObsoleteCoroutinesApi
     private fun createController(): PagingEpoxyController<
             ItemsViewState, ItemEntryWithDetails, ItemBindingModel_> =
         object :
@@ -167,5 +169,21 @@ class ItemsFragment : FragmentWithBinding<FragmentItemsBinding>() {
             override fun buildItemPlaceholder(index: Int): ItemBindingModel_ =
                 ItemBindingModel_()
                     .id("item_placeholder_$index")
+
+            override fun insertFooterModels(modelCollector: ModelCollector) {
+                with(modelCollector) {
+                    if (controller?.state?.isLoading == true) {
+                        infiniteLoading {
+                            id("loading_view")
+                            spanSizeOverride(TotalSpanOverride)
+                            onBind { _, view, _ ->
+                                val layoutParams =
+                                    view.dataBinding.root.layoutParams as? StaggeredGridLayoutManager.LayoutParams
+                                layoutParams?.isFullSpan = true
+                            }
+                        }
+                    }
+                }
+            }
         }
 }

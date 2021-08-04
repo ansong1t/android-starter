@@ -1,8 +1,9 @@
 package com.dyippay.domain.observers
 
-import androidx.paging.PagedList
-import com.dyippay.data.FlowPagedListBuilder
-import com.dyippay.data.repositories.ItemRepository
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.dyippay.data.daos.ItemDao
 import com.dyippay.data.resultentities.SearchedItemEntryWithDetails
 import com.dyippay.domain.PagingInteractor
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,19 +12,15 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 class ObservePagedSearchedItems @Inject constructor(
-    private val repository: ItemRepository
+    private val itemDao: ItemDao
 ) : PagingInteractor<ObservePagedSearchedItems.Params, SearchedItemEntryWithDetails>() {
 
     data class Params(
-        override val pagingConfig: PagedList.Config,
-        override val boundaryCallback: PagedList.BoundaryCallback<SearchedItemEntryWithDetails>? = null
+        override val pagingConfig: PagingConfig
     ) : Parameters<SearchedItemEntryWithDetails>
 
-    override fun createObservable(params: Params): Flow<PagedList<SearchedItemEntryWithDetails>> {
-        return FlowPagedListBuilder(
-            repository.observePagedSearchedItems(),
-            params.pagingConfig,
-            boundaryCallback = params.boundaryCallback
-        ).buildFlow()
-    }
+    override fun createObservable(params: Params): Flow<PagingData<SearchedItemEntryWithDetails>> =
+        Pager(config = params.pagingConfig) {
+            itemDao.getPagedSearchedItems()
+        }.flow
 }

@@ -67,7 +67,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Acc.CardView.Small">
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Dyippay.CardView.Small">
 
                 <ImageView
                     android:id="@+id/iv_event_image"
@@ -115,7 +115,7 @@
 
             <TextView
                 android:id="@+id/tv_genre"
-                style="@style/TextAppearance.Acc.Body2"
+                style="@style/TextAppearance.Dyippay.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{genre}"

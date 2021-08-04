@@ -3,9 +3,9 @@ package com.dyippay.data.daos
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
-import com.dyippay.data.entities.AccEntity
+import com.dyippay.data.entities.DyippayEntity
 
-abstract class PaginatedDao<Entity : AccEntity> : EntityDao<Entity>() {
+abstract class PaginatedDao<Entity : DyippayEntity> : EntityDao<Entity>() {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract override suspend fun insert(entity: Entity): Long

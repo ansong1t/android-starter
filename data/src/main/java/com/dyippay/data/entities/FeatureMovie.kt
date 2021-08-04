@@ -43,4 +43,4 @@ data class FeatureMovie(
     @ColumnInfo(name = "track_time_millis") val trackTimeMillis: Long = 0,
     @ColumnInfo(name = "track_view_url") val trackViewUrl: String = "",
     @ColumnInfo(name = "wrapper_type") val wrapperType: String = ""
-) : AccEntity
+) : DyippayEntity

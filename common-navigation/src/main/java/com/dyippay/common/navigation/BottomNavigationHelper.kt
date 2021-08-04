@@ -104,10 +104,10 @@ class BottomNavigationHelper(
                         // to it, creating the fixed started destination.
                         fragmentManager.beginTransaction()
                             .setCustomAnimations(
-                                R.anim.acc_enter_anim,
-                                R.anim.acc_exit_anim,
-                                R.anim.acc_pop_enter_anim,
-                                R.anim.acc_pop_exit_anim
+                                R.anim.enter_anim,
+                                R.anim.exit_anim,
+                                R.anim.pop_enter_anim,
+                                R.anim.pop_exit_anim
                             )
                             .attach(selectedFragment)
                             .setPrimaryNavigationFragment(selectedFragment)
