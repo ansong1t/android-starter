@@ -9,10 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import androidx.transition.Slide
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
-import com.dyippay.common.navigation.BottomNavigationHelper
 import com.dyippay.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
@@ -21,45 +22,28 @@ import dev.chrisbanes.insetter.setEdgeToEdgeSystemUiFlags
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
-    private lateinit var navigationHelper: BottomNavigationHelper
     private var binding: ActivityMainBinding? = null
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding!!.navHostContainer.applySystemWindowInsetsToPadding(top = true)
         binding!!.bottomNavView.applySystemWindowInsetsToPadding(bottom = true)
         binding!!.mainRoot.setEdgeToEdgeSystemUiFlags(true)
-        initHelper()
-        if (savedInstanceState == null) setupBottomNavigationBar()
+        initBottomNav()
         startService(Intent(this, PreviousTimeVisitedService::class.java))
     }
 
-    private fun initHelper() {
-        val bottomNavigationView = binding?.bottomNavView
-        val navGraphIds = listOf(
-            R.navigation.bottom_home_nav,
-            R.navigation.bottom_saved_nav
-        )
-        // Setup the bottom navigation view with a list of navigation graphs
-        navigationHelper = BottomNavigationHelper(
-            bottomNavigationView = bottomNavigationView,
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.nav_host_container,
-            intent = intent,
-            destinationChangedListener = this
-        )
-    }
+    private fun initBottomNav() {
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_container
+        ) as NavHostFragment
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        setupBottomNavigationBar()
-    }
+        navController = navHostFragment.navController
+        navController.addOnDestinationChangedListener(this)
 
-    private fun setupBottomNavigationBar() {
-        lifecycle.removeObserver(navigationHelper)
-        lifecycle.addObserver(navigationHelper)
-        navigationHelper.setupWithNavController()
+        binding!!.bottomNavView.setupWithNavController(navController)
     }
 
     private fun showBottomNav(show: Boolean) {

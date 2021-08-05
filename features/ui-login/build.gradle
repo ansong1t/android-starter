@@ -1,0 +1,54 @@
+import com.dyippay.Libs
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'dagger.hilt.android.plugin'
+
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(':base-android')
+    implementation project(':data-android')
+    implementation project(':domain')
+    implementation project(':commons:layout')
+    implementation project(':commons:ui-resources')
+    implementation project(':commons:ui-view')
+    implementation project(':commons:databinding')
+    implementation project(':commons:navigation')
+    implementation project(':commons:image-loading')
+
+    implementation Libs.AndroidX.constraintLayout
+    implementation Libs.AndroidX.Navigation.fragment
+
+    implementation Libs.Insetter.core
+    implementation Libs.Insetter.ktx
+
+    // Hilt
+    implementation Libs.Google.Hilt.hiltAndroid
+    kapt Libs.Google.Hilt.hiltCompiler
+}

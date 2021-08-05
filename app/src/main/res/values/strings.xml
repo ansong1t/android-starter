@@ -3,4 +3,7 @@
     <string name="bottom_nav_home">Home</string>
     <string name="bottom_nav_search">Search</string>
     <string name="bottom_nav_saved">Saved</string>
+    <string name="bottom_nav_wallet">Wallet</string>
+    <string name="bottom_nav_messages">Messages</string>
+    <string name="bottom_nav_more">More</string>
 </resources>
