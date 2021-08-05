@@ -31,10 +31,20 @@ class LoginViewModel @Inject constructor(
     }
 
     fun login() {
-        val username = currentState().username.value ?: ""
-        val password = currentState().password.value ?: ""
 
         viewModelScope.launch {
+            val username = currentState().username.value.orEmpty()
+            if (username.isEmpty()) {
+                setState { copy(viewEvent = Event(LoginViewEvent.Error("Username is empty."))) }
+                return@launch
+            }
+
+            val password = currentState().password.value.orEmpty()
+            if (password.isEmpty()) {
+                setState { copy(viewEvent = Event(LoginViewEvent.Error("Password is empty."))) }
+                return@launch
+            }
+
             login(Login.Params(username, password))
                 .collectInto(buttonLoading) { status ->
                     when (status) {
