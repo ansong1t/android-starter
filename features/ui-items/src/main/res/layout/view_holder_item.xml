@@ -39,8 +39,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
+        android:background="?colorBackground"
+        android:backgroundTint="?colorBackground"
         android:onClick="@{onClickListener}"
         app:cardElevation="@dimen/elevation_8"
         app:cardPreventCornerOverlap="false"
@@ -66,8 +66,7 @@
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Dyippay.CardView.Small">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/iv_event_image"
@@ -100,12 +99,12 @@
 
             <TextView
                 android:id="@+id/tv_item_name"
-                style="?textAppearanceHeadline3"
+                style="@style/TextAppearance.Title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_6"
                 android:text="@{name}"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimaryFull"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintEnd_toEndOf="@+id/cv_image_container"
                 app:layout_constraintHorizontal_bias="0"
@@ -115,7 +114,7 @@
 
             <TextView
                 android:id="@+id/tv_genre"
-                style="@style/TextAppearance.Dyippay.Body2"
+                style="@style/Styles.Text.Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{genre}"
@@ -128,7 +127,7 @@
 
             <TextView
                 android:id="@+id/tv_price"
-                style="?textAppearanceSubtitle2"
+                style="@style/Styles.Text.Subheadline.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_6"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Styles.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="elevation">8dp</item>
+        <item name="backgroundTint">?colorOnPrimary</item>
+        <item name="itemIconTint">@color/bottom_navigation_item_icon_tint</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemTextAppearanceInactive">@style/Styles.BottomNavigation.Inactive</item>
+        <item name="itemTextAppearanceActive">@style/Styles.BottomNavigation.Inactive</item>
+    </style>
+
+    <style name="Styles.BottomNavigation.Inactive" parent="TextAppearance.Caption">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?colorSecondaryShade1</item>
+    </style>
+
+    <style name="Styles.BottomNavigation.Active" parent="TextAppearance.Caption">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?colorSecondaryShade1</item>
+    </style>
+</resources>

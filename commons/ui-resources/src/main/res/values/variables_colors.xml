@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Since this project's design does not implemented Theming & Styling  -->
+    <!--  customized variables to suffice  -->
+    <style name="Variables.Colors" parent="Variables.Typography">
+        <item name="colorPrimaryFull">#4E46BF</item> <!---->
+        <item name="colorPrimaryShade1">#144E46BF</item>
+        <item name="colorPrimaryShade2">#F6F6F6</item>
+        <item name="colorSecondaryFull">#999999</item>
+        <item name="colorSecondaryShade1">#666666</item>
+        <item name="colorSecondaryShade2">#333333</item>
+
+        <item name="colorAlertWarning">#999999</item>
+        <item name="colorAlertSuccess">#666666</item>
+        <item name="colorAlertError">#EC726A</item>
+        <item name="colorGreyInactive">#ABABAB</item> <!---->
+        <item name="colorGreyBorderDivider">#DDDDDD</item>
+        <item name="colorBackground">#FFFFFF</item>
+        <item name="colorSheet">#FFFFFF</item>
+
+        <!-- On Colors -->
+        <item name="colorOnLightRegular">#999999</item>
+        <item name="colorOnLightSecondary">#666666</item>
+        <item name="colorOnLightTertiary">#CCFFFFFF</item>
+
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorOnSecondary">#232323</item>
+        <item name="colorOnAlertError">#FFFFFF</item>
+        <item name="colorOnAlertWarning">#333333</item>
+        <item name="colorOnAlertSuccess">#000000</item>
+        <item name="rippleColor">@color/color_primary_full_12</item>
+    </style>
+</resources>

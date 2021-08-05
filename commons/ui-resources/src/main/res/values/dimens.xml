@@ -34,6 +34,7 @@
     <dimen name="padding_8">8dp</dimen>
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_12">12dp</dimen>
+    <dimen name="padding_14">14dp</dimen>
     <dimen name="padding_16">16dp</dimen>
     <dimen name="padding_24">24dp</dimen>
 
@@ -71,4 +72,6 @@
     <dimen name="default_side_top">20dp</dimen>
 
     <dimen name="carousel_item_width">150dp</dimen>
+
+    <dimen name="toolbarElevation">6dp</dimen>
 </resources>
