@@ -1,12 +1,15 @@
-package com.appetiser.ui.login
+package com.dyippay.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.appetiser.ui.login.R
 import com.appetiser.ui.login.databinding.FragmentLoginBinding
 import com.dyippay.common.FragmentWithBinding
 import dagger.hilt.android.AndroidEntryPoint
+import dev.chrisbanes.insetter.applyInsetter
 
 @AndroidEntryPoint
 class LoginFragment :
@@ -14,14 +17,19 @@ class LoginFragment :
 
     private val viewModel: LoginViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(
         binding: FragmentLoginBinding,
         savedInstanceState: Bundle?
     ) {
+
+        binding.txtDontHaveAnAccount.applyInsetter {
+            type(navigationBars = true) {
+                margin(bottom = true)
+            }
+        }
+        binding.btnSignIn.setOnClickListener {
+            findNavController().navigate(R.id.action_global_to_home_graph)
+        }
         viewModel.liveData.observe(viewLifecycleOwner, ::render)
     }
 
@@ -34,5 +42,6 @@ class LoginFragment :
 
     private fun render(state: LoginViewState) {
         val binding = requireBinding()
+        binding.state = state
     }
 }

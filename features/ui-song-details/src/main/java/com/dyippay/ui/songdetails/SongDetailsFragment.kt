@@ -15,8 +15,6 @@ import com.dyippay.ui.SpacingItemDecorator
 import com.dyippay.ui.songdetails.databinding.FragmentSongDetailsBinding
 import com.dyippay.util.viewModelProviderFactoryOf
 import dagger.hilt.android.AndroidEntryPoint
-import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
-import dev.chrisbanes.insetter.setEdgeToEdgeSystemUiFlags
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,8 +45,6 @@ class SongDetailsFragment :
     ) {
         binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        binding.ivHeader.applySystemWindowInsetsToPadding(top = true, consume = true)
-        binding.parent.setEdgeToEdgeSystemUiFlags(true)
         binding.rvScrollable.apply {
             setController(controller!!.apply {
                 callbacks = object : SongDetailsEpoxyController.Callbacks {

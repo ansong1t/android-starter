@@ -16,11 +16,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav"
-    app:startDestination="@+id/bottom_home_nav">
+    app:startDestination="@+id/bottom_home_graph">
 
-    <include app:graph="@navigation/bottom_home_nav" />
-    <include app:graph="@navigation/bottom_wallet_nav" />
-    <include app:graph="@navigation/bottom_messages_nav" />
-    <include app:graph="@navigation/bottom_more_nav" />
+    <include app:graph="@navigation/login_graph" />
 
+    <include app:graph="@navigation/bottom_home_graph" />
+
+    <include app:graph="@navigation/bottom_wallet_graph" />
+
+    <include app:graph="@navigation/bottom_messages_graph" />
+
+    <include app:graph="@navigation/bottom_more_graph" />
+
+    <action
+        android:id="@+id/action_global_to_home_graph"
+        app:destination="@id/bottom_home_graph"
+        app:popUpTo="@id/main_nav"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_global_to_login_graph"
+        app:destination="@id/login_graph"
+        app:popUpTo="@id/main_nav"
+        app:popUpToInclusive="true" />
 </navigation>

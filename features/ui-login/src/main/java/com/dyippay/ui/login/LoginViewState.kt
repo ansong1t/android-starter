@@ -1,4 +1,4 @@
-package com.appetiser.ui.login
+package com.dyippay.ui.login
 
 import androidx.lifecycle.MutableLiveData
 

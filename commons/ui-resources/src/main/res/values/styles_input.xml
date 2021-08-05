@@ -12,7 +12,7 @@
         <item name="boxStrokeWidth">0dp</item>
         <item name="strokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
-        <item name="android:textColorHint">?attr/colorOnLightTertiary</item>
+        <item name="android:textColorHint">?attr/colorOnLightRegular</item>
         <item name="hintTextColor">?attr/colorPrimaryFull</item>
 
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Baseplate.Input</item>
@@ -26,7 +26,7 @@
         <item name="boxBackgroundColor">?attr/colorBackground</item>
         <item name="hintTextAppearance">@style/TextAppearance.Footnote</item>
         <item name="boxCollapsedPaddingTop">4dp</item>
-        <item name="android:textColorHint">?attr/colorOnLightTertiary</item>
+        <item name="android:textColorHint">?attr/colorOnLightRegular</item>
         <item name="hintTextColor">?attr/colorPrimaryFull</item>
         <item name="boxStrokeColor">@color/input_line_box_stroke_color</item>
         <item name="strokeColor">?attr/colorPrimaryFull</item>
@@ -35,13 +35,8 @@
     </style>
 
     <style name="Styles.Input.TextInputLayout.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="materialThemeOverlay">
-            @style/ThemeOverlay.Baseplate.TextInputLayout.Cursor
-        </item>
-
         <item name="hintTextAppearance">@style/TextAppearance.Footnote</item>
-        <item name="boxCollapsedPaddingTop">4dp</item>
-        <item name="android:textColorHint">?attr/colorOnLightTertiary</item>
+        <item name="android:textColorHint">?attr/colorOnLightRegular</item>
         <item name="hintTextColor">?attr/colorPrimaryFull</item>
         <item name="boxStrokeColor">@color/input_outlined_box_stroke_color</item>
         <item name="strokeColor">?attr/colorPrimaryFull</item>
@@ -51,29 +46,30 @@
 
 
     <style name="Styles.Input.TextInputEditText" parent="">
-        <item name="android:textAppearance">@style/TextAppearance.Body</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body2</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
     </style>
 
     <style name="Styles.Input.TextInputEditText.Filled" parent="">
-        <item name="android:textAppearance">@style/TextAppearance.Body</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body2</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColor">?attr/colorSecondaryShade2</item>
     </style>
 
     <style name="Styles.Input.TextInputEditText.Outlined" parent="">
-        <item name="android:textAppearance">@style/TextAppearance.Body</item>
+        <item name="android:textAppearance">@style/TextAppearance.Body2</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
-        <item name="android:textColor">?attr/colorOnLightRegular</item>
+        <item name="android:textColor">?attr/colorSecondaryShade2</item>
     </style>
 
     <style name="Styles.Input.TextInputEditText.Line">
         <item name="android:textAppearance">@style/TextAppearance.Body</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
-        <item name="android:textColor">?attr/colorOnLightRegular</item>
+        <item name="android:textColor">?attr/colorSecondaryShade2</item>
     </style>
 
     <style name="Styles.Input.TextInputEditText.Prefix" />

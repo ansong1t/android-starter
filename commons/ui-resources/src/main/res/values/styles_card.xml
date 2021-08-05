@@ -9,7 +9,7 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
-        <item name="cardBackgroundColor">?colorOnLightSecondary</item>
+        <item name="colorOnPrimary">?colorOnLightSecondary</item>
         <item name="cardElevation">40dp</item>
     </style>
 

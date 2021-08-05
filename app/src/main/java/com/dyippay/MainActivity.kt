@@ -1,23 +1,26 @@
 package com.dyippay
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import androidx.transition.Slide
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
+import com.dyippay.common.navigation.MainNavDirections
 import com.dyippay.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
-import dev.chrisbanes.insetter.setEdgeToEdgeSystemUiFlags
+import dev.chrisbanes.insetter.applyInsetter
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
@@ -27,12 +30,42 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding!!.navHostContainer.applySystemWindowInsetsToPadding(top = true)
-        binding!!.bottomNavView.applySystemWindowInsetsToPadding(bottom = true)
-        binding!!.mainRoot.setEdgeToEdgeSystemUiFlags(true)
+        binding!!.bottomNavView.applyInsetter {
+            type(navigationBars = true) {
+                padding(bottom = true)
+            }
+        }
         initBottomNav()
-        startService(Intent(this, PreviousTimeVisitedService::class.java))
+        handleExtras()
+    }
+
+    private fun handleExtras() {
+        intent?.extras?.let { bundle ->
+            val startScreen = bundle.getString(EXTRA_START_SCREEN) ?: return
+
+            require(startScreen.isNotEmpty()) {
+                "EXTRA_START_SCREEN not found!"
+            }
+
+            when (startScreen) {
+                START_MAIN -> {
+                    navigate(
+                        MainNavDirections
+                            .actionGlobalToHomeGraph(),
+                        R.id.homeFragment
+                    )
+                }
+                START_LOGIN -> {
+                    navigate(
+                        MainNavDirections
+                            .actionGlobalToLoginGraph(),
+                        R.id.loginFragment
+                    )
+                }
+            }
+        }
     }
 
     private fun initBottomNav() {
@@ -79,9 +112,29 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
     }
 
+    private fun navigate(navDirections: NavDirections, destinationScreenId: Int) {
+        if (navController.currentDestination!!.id != destinationScreenId) {
+            navController
+                .navigate(navDirections)
+        }
+    }
+
     companion object {
         private val NO_BOTTOM_NAV_IDS = arrayOf(
-            R.id.songDetailsFragment
+            R.id.songDetailsFragment,
+            R.id.loginFragment
         )
+
+        const val EXTRA_START_SCREEN = "EXTRA_START_SCREEN"
+        const val START_MAIN = "START_MAIN"
+        const val START_LOGIN = "START_LOGIN"
+
+        fun openActivity(context: Context, extras: Bundle) {
+            context.startActivity(
+                Intent(context, MainActivity::class.java).apply {
+                    putExtras(extras)
+                }
+            )
+        }
     }
 }

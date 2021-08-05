@@ -46,7 +46,6 @@ dependencies {
     implementation Libs.AndroidX.Navigation.fragment
 
     implementation Libs.Insetter.core
-    implementation Libs.Insetter.ktx
 
     // Hilt
     implementation Libs.Google.Hilt.hiltAndroid

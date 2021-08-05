@@ -74,4 +74,5 @@
     <dimen name="carousel_item_width">150dp</dimen>
 
     <dimen name="toolbarElevation">6dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
 </resources>

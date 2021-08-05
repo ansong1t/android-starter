@@ -164,8 +164,6 @@ dependencies {
 
     testImplementation Libs.mockito
 
-    implementation Libs.Insetter.ktx
-    implementation Libs.Insetter.dbx
     implementation Libs.Insetter.core
 
     // Hilt

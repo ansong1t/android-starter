@@ -166,10 +166,8 @@ object Libs {
     }
 
     object Insetter {
-        private const val version = "0.3.0"
-        const val core = "dev.chrisbanes:insetter:$version"
-        const val dbx = "dev.chrisbanes:insetter-dbx:$version"
-        const val ktx = "dev.chrisbanes:insetter-ktx:$version"
+        private const val version = "0.6.0"
+        const val core = "dev.chrisbanes.insetter:insetter:$version"
     }
 
     object Junit5 {

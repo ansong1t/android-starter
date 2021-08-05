@@ -36,6 +36,11 @@
         <item name="lineHeight">@dimen/line_height_body</item>
     </style>
 
+    <style name="Styles.Text.Body2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Body2</item>
+        <item name="lineHeight">@dimen/line_height_body</item>
+    </style>
+
     <style name="Styles.Text.Body.Medium" parent="Widget.MaterialComponents.TextView">
         <item name="android:textAppearance">@style/TextAppearance.Body.Medium</item>
         <item name="lineHeight">@dimen/line_height_body</item>
