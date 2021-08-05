@@ -29,4 +29,8 @@ abstract class RepositoryModules {
     @Binds
     @Singleton
     abstract fun bindAudioBookRepository(repository: AudioBookRepositoryImpl): AudioBookRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindAuthRepository(repository: AuthRepositoryImpl): AuthRepository
 }

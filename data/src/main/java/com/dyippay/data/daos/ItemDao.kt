@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import com.dyippay.data.datasources.AllItems
+import com.dyippay.data.remotesources.AllItems
 import com.dyippay.data.entities.AudioBook
 import com.dyippay.data.entities.FeatureMovie
 import com.dyippay.data.entities.ItemEntry

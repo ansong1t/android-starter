@@ -105,8 +105,8 @@
             app:cardCornerRadius="@dimen/corner_size_medium"
             app:cardElevation="@dimen/elevation_small"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:background="@color/white">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -140,7 +140,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:hint="@string/username" />
+                        android:hint="@string/username"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:text="@={state.username}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -159,7 +163,10 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:hint="@string/password"
-                        android:inputType="textPassword" />
+                        android:imeOptions="actionGo"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:text="@={state.password}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -167,9 +174,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_12"
-                    android:text="@string/sign_in"
+                    android:clickable="@{!state.buttonLoading}"
+                    android:focusable="@{!state.buttonLoading}"
+                    android:text="@{state.buttonLoading ? `` : @string/sign_in}"
                     android:textSize="14sp"
                     app:layout_constraintTop_toBottomOf="@id/input_password" />
+
+                <ProgressBar
+                    android:id="@+id/loading"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:elevation="@dimen/elevation_small"
+                    android:progressTint="@color/white"
+                    android:visibility="@{state.buttonLoading ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_sign_in"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/btn_sign_in"
+                    app:layout_constraintStart_toStartOf="@id/btn_sign_in"
+                    app:layout_constraintTop_toTopOf="@id/btn_sign_in" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_forgot_password"
@@ -190,17 +214,17 @@
                     android:text="@string/dont_have_an_account"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/txt_sign_in"
+                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_forgot_password"
-                    app:layout_constraintHorizontal_chainStyle="packed" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_forgot_password" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_sign_in"
                     style="@style/Styles.Text.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_16"
                     android:layout_marginStart="@dimen/margin_4"
+                    android:layout_marginTop="@dimen/margin_16"
                     android:text="@string/signup"
                     android:textColor="?colorPrimaryFull"
                     app:layout_constraintBottom_toBottomOf="@id/txt_dont_have_an_account"

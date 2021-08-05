@@ -10,7 +10,7 @@ import com.dyippay.data.entities.session.token.AccessToken
 abstract class TokenDao : EntityDao<AccessToken>() {
 
     @Query("SELECT * FROM ${AccessToken.TOKEN_TABLE_NAME} LIMIT 1")
-    abstract suspend fun getToken(): AccessToken
+    abstract suspend fun getToken(): AccessToken?
 
     @Query("DELETE FROM ${AccessToken.TOKEN_TABLE_NAME}")
     abstract fun logoutToken()

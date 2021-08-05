@@ -2,13 +2,13 @@ package com.dyippay.data.repositories
 
 import androidx.paging.PagingSource
 import com.dyippay.data.daos.ItemDao
-import com.dyippay.data.datasources.GetItemDataSource
+import com.dyippay.data.remotesources.GetItemRemoteSource
 import com.dyippay.data.resultentities.ItemEntryWithDetails
 import com.dyippay.data.resultentities.SearchedItemEntryWithDetails
 import javax.inject.Inject
 
 class ItemRepositoryImpl @Inject constructor(
-    private val getItemDataSource: GetItemDataSource,
+    private val getItemRemoteSource: GetItemRemoteSource,
     private val itemDao: ItemDao
 ) : ItemRepository {
 
@@ -23,7 +23,7 @@ class ItemRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateItems() {
-        val result = getItemDataSource()
+        val result = getItemRemoteSource()
         val items = result.getOrThrow()
         itemDao.withTransaction {
             itemDao.insertItems(items)

@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.appetiser.ui.login.R
 import com.appetiser.ui.login.databinding.FragmentLoginBinding
 import com.dyippay.common.FragmentWithBinding
+import com.dyippay.util.showAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applyInsetter
 
@@ -28,7 +29,7 @@ class LoginFragment :
             }
         }
         binding.btnSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_global_to_home_graph)
+            viewModel.login()
         }
         viewModel.liveData.observe(viewLifecycleOwner, ::render)
     }
@@ -43,5 +44,17 @@ class LoginFragment :
     private fun render(state: LoginViewState) {
         val binding = requireBinding()
         binding.state = state
+
+        state.viewEvent?.getContentIfNotHandled()?.let {
+            when (it) {
+                LoginViewEvent.ProceedToHome -> findNavController()
+                    .navigate(R.id.action_global_to_home_graph)
+
+                is LoginViewEvent.Error -> requireContext().showAlertDialog(
+                    title = "Error",
+                    body = it.message
+                )
+            }
+        }
     }
 }

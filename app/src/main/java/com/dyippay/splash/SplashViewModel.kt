@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dyippay.common.Event
-import com.dyippay.domain.interactors.GetSession
+import com.dyippay.domain.interactors.IsLoggedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    getSession: GetSession
+    isLoggedIn: IsLoggedIn
 ) : ViewModel() {
 
     private val _navState = MutableLiveData<Event<SplashState>>()
@@ -21,11 +21,11 @@ class SplashViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            getSession(GetSession.Params)
+            isLoggedIn(IsLoggedIn.Params)
                 .collect {
                     _navState.postValue(
                         Event(
-                            if (it.accessToken.token.isNotEmpty()) SplashState.UserIsLoggedIn
+                            if (it) SplashState.UserIsLoggedIn
                             else SplashState.UserIsNotLoggedIn
                         )
                     )

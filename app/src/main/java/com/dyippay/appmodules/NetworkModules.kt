@@ -1,15 +1,16 @@
 package com.dyippay.appmodules
 
 import android.content.Context
-import com.dyippay.data.services.ItemService
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.dyippay.BuildConfig
 import com.dyippay.CACHE_SIZE
 import com.dyippay.OKHTTP_CONNECT_TIMEOUT_SECONDS
 import com.dyippay.OKHTTP_READ_TIMEOUT_SECONDS
 import com.dyippay.OKHTTP_WRITE_TIMEOUT_SECONDS
+import com.dyippay.data.services.AuthService
+import com.dyippay.data.services.ItemService
 import com.dyippay.network.ServiceInterceptor
 import com.dyippay.util.getPref
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,7 +63,7 @@ object NetworkModules {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL + BuildConfig.API_VERSION + "/")
             .client(okHttpClient)
             .build()
 
@@ -70,4 +71,9 @@ object NetworkModules {
     @Singleton
     fun provideSearchService(retrofit: Retrofit) =
         retrofit.create(ItemService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideAuthService(retrofit: Retrofit) =
+        retrofit.create(AuthService::class.java)
 }

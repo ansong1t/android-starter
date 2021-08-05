@@ -5,7 +5,7 @@ import com.dropbox.android.external.store4.SourceOfTruth
 import com.dropbox.android.external.store4.Store
 import com.dropbox.android.external.store4.StoreBuilder
 import com.dyippay.data.daos.ItemDao
-import com.dyippay.data.datasources.GetItemDataSource
+import com.dyippay.data.remotesources.GetItemRemoteSource
 import com.dyippay.data.resultentities.ItemEntryWithDetails
 import dagger.Module
 import dagger.Provides
@@ -26,11 +26,11 @@ object ItemsStoreModule {
     @Provides
     @Singleton
     fun provideShowStore(
-        getItemDataSource: GetItemDataSource,
+        getItemRemoteSource: GetItemRemoteSource,
         itemDao: ItemDao
     ): ItemsStore = StoreBuilder.from(
         fetcher = Fetcher.of { _: String ->
-            getItemDataSource().getOrThrow()
+            getItemRemoteSource().getOrThrow()
         },
         sourceOfTruth = SourceOfTruth.of(
             reader = {

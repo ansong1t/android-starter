@@ -15,16 +15,16 @@
 
     <style name="Styles.Dialog.Alert.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">?attr/colorPrimaryFull</item>
-        <item name="android:textAppearance">@style/TextAppearance.Headline</item>
+        <item name="android:textAppearance">@style/TextAppearance.Subheadline</item>
     </style>
 
     <style name="Styles.Dialog.Alert.PositiveButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">?attr/colorPrimaryFull</item>
-        <item name="android:textAppearance">@style/TextAppearance.Headline</item>
+        <item name="android:textAppearance">@style/TextAppearance.Subheadline</item>
     </style>
 
     <style name="Styles.Dialog.Alert.Title.Text" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text">
-        <item name="android:textColor">?attr/colorOnLightRegular</item>
+        <item name="android:textColor">?attr/colorSecondaryShade2</item>
         <item name="android:textAppearance">@style/TextAppearance.Title3</item>
     </style>
 

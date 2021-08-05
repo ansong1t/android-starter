@@ -1,7 +1,7 @@
 package com.dyippay.data.services
 
-import com.dyippay.data.responses.BaseResponse
 import com.dyippay.data.responses.ItemResponse
+import com.dyippay.data.responses.base.BaseResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

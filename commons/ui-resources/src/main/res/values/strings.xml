@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="view_preview">View Preview</string>
+    <string name="hide">Hide</string>
 </resources>

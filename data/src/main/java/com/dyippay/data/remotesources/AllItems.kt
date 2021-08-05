@@ -1,4 +1,4 @@
-package com.dyippay.data.datasources
+package com.dyippay.data.remotesources
 
 import com.dyippay.data.entities.TvEpisode
 import com.dyippay.data.entities.Song

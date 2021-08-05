@@ -1,4 +1,4 @@
-package com.dyippay.data.datasources
+package com.dyippay.data.remotesources
 
 import com.dyippay.data.entities.AudioBook
 import com.dyippay.data.entities.ErrorResult
@@ -8,18 +8,18 @@ import com.dyippay.data.entities.Result
 import com.dyippay.data.entities.Song
 import com.dyippay.data.entities.TvEpisode
 import com.dyippay.data.entities.TvShow
+import com.dyippay.data.mappers.ItemResponseToAudioBookMapper
 import com.dyippay.data.mappers.ItemResponseToFeatureMovieMapper
 import com.dyippay.data.mappers.ItemResponseToSongMapper
 import com.dyippay.data.mappers.ItemResponseToTvEpisodeMapper
 import com.dyippay.data.mappers.ItemResponseToTvShowMapper
-import com.dyippay.data.mappers.ItemResponseToAudioBookMapper
 import com.dyippay.data.services.ItemService
 import com.dyippay.data.types.ListItemType
 import com.dyippay.data.types.responseToTrackType
 import com.dyippay.extensions.toResult
 import javax.inject.Inject
 
-class GetItemDataSource @Inject constructor(
+class GetItemRemoteSource @Inject constructor(
     private val itemService: ItemService,
     private val songMapper: ItemResponseToSongMapper,
     private val featureMovieMapper: ItemResponseToFeatureMovieMapper,
@@ -30,7 +30,7 @@ class GetItemDataSource @Inject constructor(
     suspend operator fun invoke(): Result<AllItems> =
         try {
             itemService.getItems().toResult { response ->
-                val results = response.results!!
+                val results = response.data
 
                 val tvEpisodes = arrayListOf<TvEpisode>()
                 val songs = arrayListOf<Song>()
