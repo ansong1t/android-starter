@@ -4,6 +4,22 @@ object Versions {
     const val ktlint = "0.29.0"
 }
 
+object Android {
+    // Manifest version information!
+    private const val versionMajor = 0
+    private const val versionMinor = 0
+    private const val versionPatch = 0
+    private const val versionBuild = 1 // bump for dogfood builds, public betas, etc.
+
+    const val versionCode =
+        versionMajor * 10000 + versionMinor * 1000 + versionPatch * 10 + versionBuild
+    const val versionName = "$versionMajor.$versionMinor.$versionPatch"
+
+    const val compileSdkVersion = 30
+    const val targetSdkVersion = 30
+    const val minSdkVersion = 21
+}
+
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:4.2.0"
 
@@ -120,10 +136,11 @@ object Libs {
     }
 
     object Google {
-        const val crashlytics = "com.google.firebase:firebase-crashlytics:18.0.1"
-        const val crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.5.0"
-        const val firebaseAnalytics = "com.google.firebase:firebase-analytics:19.0.0"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:22.0.0"
+        const val crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.7.1"
+        const val crashlytics = "com.google.firebase:firebase-crashlytics"
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics"
+        const val firebaseBom = "com.google.firebase:firebase-bom:28.3.0"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging"
         const val material = "com.google.android.material:material:1.4.0"
         const val truth = "com.google.truth:truth:0.42"
         const val gmsGoogleServices = "com.google.gms:google-services:4.3.8"
