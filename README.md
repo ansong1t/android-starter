@@ -1,4 +1,4 @@
-## Dyippay ##
+## Android Starter ##
 
 ## The Architecture ##
 * MVVM Pattern with Clean Architecture (includes Domain, Repository layer). MVVM separates your view (i.e. `Activity`s and `Fragment`s) from your business logic.
